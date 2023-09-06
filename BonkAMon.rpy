@@ -5,7 +5,6 @@ init -990 python in mas_submod_utils:
         description="Heh. Bonk your Monika!",
         version="0.0.3"
     )
-
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
 
 default persistant.bonk_count = [0, 0, 0]
@@ -94,19 +93,19 @@ init 10001:
                     area (310, 639, 202, 65)
                     style "mas_extra_menu_frame"
                     if persistent._mas_in_idle_mode == True:
-                        textbutton ("Open World"):
+                        textbutton ("开放世界"):
                             xalign 0.5
                             yalign 0.5
                             action NullAction()
                     else:
-                        textbutton ("Open World"):
+                        textbutton ("开放世界"):
                             xalign 0.5
                             yalign 0.5
                             action [Hide("mas_extramenu_area"), Jump("view_OW")] hover_sound gui.hover_sound
                 frame:        
-                    area (520, 639, 202, 65)
+                    area (520, 650, 202, 65)
                     style "mas_extra_menu_frame"
-                    textbutton ("Bonk Monika"):
+                    textbutton ("敲敲莫妮卡"):
                         xalign 0.5
                         yalign 0.5
                         action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound           
@@ -114,7 +113,7 @@ init 10001:
             frame:
                 area (308, 639, 202, 65)
                 style "mas_extra_menu_frame"
-                textbutton ("Bonk Monika"):
+                textbutton ("敲敲莫妮卡"):
                     xalign 0.5
                     yalign 0.5
                     action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound
@@ -127,14 +126,14 @@ screen bonk_menu():
             spacing 20
             xpos 527
             ypos 534
-            textbutton ("Bonk Monika!"): 
-                xysize(120, None) 
+            textbutton ("敲莫妮卡"): 
+                xysize(130, None) 
                 action Jump("bonk_a_mon") hover_sound gui.hover_sound
             textbutton ("Return") action Jump("mas_extra_menu_close") hover_sound gui.hover_sound
     vbox: 
         xpos 1166
         ypos 0
-        textbutton ("Secret Stuff") action Jump("DevBaka") hover_sound gui.hover_sound
+        textbutton ("秘密选项") action Jump("DevBaka") hover_sound gui.hover_sound
 
 
 label view_bonkmenu:
@@ -164,8 +163,8 @@ label BonkMain:
             xpos 1000
             yanchor 1.0
             ypos 260
-            label _("Interactions\navailable:")
-            text _("Head") outlines [(2, "#808080", 0, 0)]
+            label _("可用的\n互动:")
+            text _("头") outlines [(2, "#808080", 0, 0)]
 
         vbox:
             style_prefix "hkb"
@@ -187,8 +186,8 @@ return
 label bonk_a_mon:
 
 m "..."
-m 6eksdlb "Is... that a squeaky bat, [player]?"
-m 4rtsdld "Ahaha.... What are you going to do with that?"
+m 6eksdlb "那... 是一个充气球棒吗, [player]?"
+m 4rtsdld "啊哈哈，你要拿他干什么?"
 #$ mas_HKBDropShield()
 jump show_bonk_screen
 return
@@ -196,40 +195,40 @@ return
 label BonkTime:
     $ persistant.bonk_count[1] += 1
     if persistant.bonk_count[1] == 1:
-        m 2efp "Ow! Did you just... bonk me on the head!?"
-        m 4tuu "Guess I'll just wack you back!"
+        m 2efp "啊呜! 你刚刚...敲了我的头吗？!?"
+        m 4tuu "我猜我只能敲回去了!"
     elif persistant.bonk_count[1] == 2:
-        m 6lfsdrp "Gah! [player]!"
-        m 5tsa "... You must be enjoying this huh?"
+        m 6lfsdrp "唉! [player]!"
+        m 5tsa "...你一定很喜欢这个，对吧？"
     elif persistant.bonk_count[1] == 3:
-        m 2dfbsa "Ow! I hope you're prepared for twice the pain once I cross over [player]!"
+        m 2dfbsa "哎呀！我希望你准备好了，因为一旦我越过[player]，你将承受双倍的痛苦！"
     elif persistant.bonk_count[1] == 4:
-        m 6lfp "AH! [player], I'll get my revenge on you."
-        m 3nfu "You'd better watch out!"
+        m 6lfp "啊！[player]，我会向你报仇的。"
+        m 3nfu "你最好小心点！"
     elif persistant.bonk_count[1] == 5:
-        m 4wfp "Ow! How can one squeaky hammer do so much damage??"
-        m 2gsp "This shouldn't even be possible..."
+        m 4wfp "呜啊！一个充气锤子怎么打人这么疼？？"
+        m 2gsp "这不可能呀……"
     elif persistant.bonk_count[1] == 6:
         m 6rtbsu "..."
         m 2ltbfp "..."
-        m 3tubfa "Oh... just wondering if I should buy a larger bat..."
-        m 5hubfb "Just Kidding!"
+        m 3tubfa "哦...只是在想我是否应该买一个更大的球棒...."
+        m 5hubfb "开玩笑啦!"
     else:
         $ moldable_variable = renpy.random.randint(1,5)
         if moldable_variable == 1:
-            m 7lfblt "Ow! Keep this up and I'll keep your files hostage..."
-            m 6tkblu "Just kidding [player]! I'll never do something like that."
+            m 7lfblt "哎呀！如果你继续这样下去，我就要扣押你的文件了..."
+            m 6tkblu "开玩笑啦， [player]! 我永远不会那么做的."
         elif moldable_variable == 2:
-            m 2kksdla "*bonk* *bonk* *bonk*"
-            m 7ksb "What a child you are [player]... but I love that about you!"
+            m 2kksdla "*敲* *敲* *敲*"
+            m 7ksb "你真孩子气，[player]... 但我喜欢你这一点。!"
         elif moldable_variable == 3:
-            m 6tut "Are you secretly... sadistic [player]?"
-            m 5eua "Just kidding!"
+            m 6tut "你是一个隐秘的虐待狂吗， [player]?"
+            m 5eua "开玩笑啦!"
         elif moldable_variable == 4:
-            m 1tkbfb "OW! ... I guess someone really wants to get hit on, huh?"
-            m 7tkbfu "I just hope you don't regret it, [player]"
+            m 1tkbfb "哎呀！...我猜有人真的想被敲打敲打，是吗？"
+            m 7tkbfu "我只是希望你别后悔哦，[player]。"
         elif moldable_variable == 5:
-            m 6wfb "Hey!"
+            m 6wfb "嘿!"
     jump show_bonk_screen
 return
 
@@ -240,7 +239,7 @@ label MainGaem:
 
 label DevBaka:
 
-"Huh... Bonk a yun... I feel that's a reference somewhere..."
+"嗯。。。Bonk a yun。。。我觉得这是某个东西的参考。。。\nps.此mod的灵感来源"
 
 jump ch30_loop
 return
